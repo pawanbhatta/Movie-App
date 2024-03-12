@@ -12,6 +12,7 @@ import Icon from "react-native-vector-icons/Feather";
 import { styles } from "../theme";
 import TrendingMovies from "../components/trendingMovies";
 import MovieList from "../components/MovieList";
+import { useNavigation } from "@react-navigation/native";
 
 const ios = Platform.OS === "ios";
 
@@ -19,6 +20,9 @@ const HomeScreen = () => {
   const [trending, setTrending] = useState([1, 2, 3]);
   const [upcoming, setUpcoming] = useState([1, 2, 3]);
   const [topRated, setTopRated] = useState([1, 2, 3]);
+
+  const navigation = useNavigation();
+
   return (
     <View className="flex-1 bg-neutral-800">
       {/* Search bar and logo */}
@@ -34,7 +38,7 @@ const HomeScreen = () => {
             ovies
           </Text>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Search")}>
             <Icon name="search" color={"white"} size={30} />
           </TouchableOpacity>
         </View>
